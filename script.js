@@ -35,7 +35,7 @@ const TOP_MARGIN = 125;
 const SIDE_MARGIN = 18;
 
 // 結果発表からスタートのまとに戻るまでの待ち時間
-const RESULT_DISPLAY_MS = 5000;
+const RESULT_DISPLAY_MS = 6500;
 
 const normalBalloons = [
   { image: "images/redballoon.png", points: 10 },
