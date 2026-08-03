@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ジャングルバルーンシューティング 2人用</title>
+  <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<main id="game">
+  <div id="title">ジャングルバルーンシューティング</div>
+  <div id="divider" aria-hidden="true"></div>
+
+  <section class="playerSide leftSide state-connecting" id="player1Side">
+    <div class="playerLabel">PLAYER 1</div>
+    <div class="scoreBox">スコア <span id="score1">0</span></div>
+    <div class="timeBox" id="timeBox1">のこり <span id="time1">20</span> びょう</div>
+
+    <div class="balloonArea" id="balloonArea1"></div>
+    <div class="itemPopArea" id="itemArea1"></div>
+
+    <div class="startTarget" id="startTarget1">
+      <span class="startTargetText">START</span>
+      <span class="startTargetSub">ねらって発射！</span>
+    </div>
+
+    <div class="stateHint" id="hint1"></div>
+    <div class="countdown" id="countdown1"></div>
+
+    <div class="resultOverlay" id="resultOverlay1"></div>
+    <div class="message" id="message1"></div>
+
+    <div class="pairingCard" id="pairingCard1">
+      <h3>PLAYER 1</h3>
+      <div id="qrCode1" class="qr"><span class="qrLoading">QR作成中</span></div>
+      <div class="codeLabel">せつぞくコード</div>
+      <div id="roomCode1" class="roomCode">----</div>
+      <div id="connect1" class="connectState">スマホ接続待ち</div>
+      <p class="pairHint">スマホでQRコードを読み取ってね</p>
+    </div>
+
+    <div class="scope" id="scope1"></div>
+    <div class="shotFlash" id="shotFlash1"></div>
+  </section>
+
+  <section class="playerSide rightSide state-connecting" id="player2Side">
+    <div class="playerLabel">PLAYER 2</div>
+    <div class="scoreBox">スコア <span id="score2">0</span></div>
+    <div class="timeBox" id="timeBox2">のこり <span id="time2">20</span> びょう</div>
+
+    <div class="balloonArea" id="balloonArea2"></div>
+    <div class="itemPopArea" id="itemArea2"></div>
+
+    <div class="startTarget" id="startTarget2">
+      <span class="startTargetText">START</span>
+      <span class="startTargetSub">ねらって発射！</span>
+    </div>
+
+    <div class="stateHint" id="hint2"></div>
+    <div class="countdown" id="countdown2"></div>
+
+    <div class="resultOverlay" id="resultOverlay2"></div>
+    <div class="message" id="message2"></div>
+
+    <div class="pairingCard" id="pairingCard2">
+      <h3>PLAYER 2</h3>
+      <div id="qrCode2" class="qr"><span class="qrLoading">QR作成中</span></div>
+      <div class="codeLabel">せつぞくコード</div>
+      <div id="roomCode2" class="roomCode">----</div>
+      <div id="connect2" class="connectState">スマホ接続待ち</div>
+      <p class="pairHint">スマホでQRコードを読み取ってね</p>
+    </div>
+
+    <div class="scope" id="scope2"></div>
+    <div class="shotFlash" id="shotFlash2"></div>
+  </section>
+
+  <div id="globalBar">
+    <span id="firebaseStatus">接続準備中</span>
+    <button id="regenerateRoomButton" type="button">コードを作り直す</button>
+    <div id="pageWarning" class="pageWarning" hidden></div>
+  </div>
+</main>
+<script src="lib/qrcode.min.js"></script>
+<script type="module" src="script.js?v=8"></script>
+</body>
+</html>

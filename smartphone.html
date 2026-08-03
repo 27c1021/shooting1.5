@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>バルーンシューター コントローラー</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+    html,body{width:100%;height:100%;overflow:hidden}
+    body{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at top,#32824a,#0c2e1c 72%);font-family:"Arial Rounded MT Bold","Hiragino Maru Gothic ProN",sans-serif;color:#fff}
+    #controller,#roomSetup{display:none;width:100%;height:100%;padding:18px;align-items:center;justify-content:center;flex-direction:column}
+    h1{margin-bottom:8px;font-size:clamp(22px,7vw,38px);text-align:center;text-shadow:0 4px 3px rgba(0,0,0,.4)}
+    #playerText{margin-bottom:8px;padding:5px 18px;border:2px solid #fff;border-radius:18px;background:rgba(0,0,0,.25);font-weight:bold}
+    #roomBadge{margin-bottom:10px;font-size:13px;letter-spacing:2px}
+    .gyroButton{width:100%;max-width:320px;margin-bottom:8px;padding:11px 8px;border:2px solid rgba(255,255,255,.85);border-radius:13px;background:rgba(255,255,255,.12);color:#fff;font-size:15px;font-weight:bold}
+    .gyroButton:disabled{opacity:.48}
+    #startHint{width:100%;max-width:320px;margin-bottom:8px;padding:9px 8px;border-radius:12px;background:rgba(255,255,255,.15);color:#fff;font-size:13px;text-align:center;line-height:1.5}
+    #aimBox{position:relative;width:min(38vw,150px);height:min(38vw,150px);margin-bottom:8px;border:2px solid rgba(255,255,255,.6);border-radius:14px;background:rgba(0,0,0,.25)}
+    #aimBox:before,#aimBox:after{content:"";position:absolute;background:rgba(255,255,255,.35)}
+    #aimBox:before{top:50%;left:0;width:100%;height:1px}#aimBox:after{top:0;left:50%;width:1px;height:100%}
+    #aimDot{position:absolute;width:20px;height:20px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#ff8a2b;box-shadow:0 0 12px rgba(255,138,43,.9)}
+    #fireButton{width:min(49vw,210px);height:min(49vw,210px);border:8px solid #fff;border-radius:50%;background:radial-gradient(circle at 40% 32%,#ffba56,#f36c20 52%,#b93412 100%);color:#fff;font-size:clamp(30px,10vw,52px);font-weight:bold;box-shadow:0 10px 0 #7d240d,0 16px 28px rgba(0,0,0,.45);transition:.08s}
+    #fireButton:active{transform:translateY(8px) scale(.96);box-shadow:0 2px 0 #7d240d,0 7px 12px rgba(0,0,0,.35)}
+    #fireButton:disabled{filter:grayscale(.8);opacity:.55}
+    #status{margin-top:16px;min-width:210px;padding:8px 14px;border:2px solid rgba(255,255,255,.7);border-radius:18px;background:rgba(0,0,0,.32);font-size:14px;text-align:center}
+    #roomSetup h1{margin-bottom:18px}.setupCard{width:min(90vw,360px);padding:22px;border:3px solid #fff;border-radius:20px;background:rgba(0,0,0,.28);text-align:center}
+    #roomCodeInput{width:100%;margin:15px 0 10px;padding:13px;border:0;border-radius:12px;text-align:center;font-size:27px;font-weight:bold;letter-spacing:6px;text-transform:uppercase}
+    #roomForm button{width:100%;padding:12px;border:0;border-radius:12px;background:#f36c20;color:#fff;font-size:17px;font-weight:bold}
+    #roomError{min-height:22px;margin-top:10px;color:#ffb6b6}
+    .httpsNotice{margin-top:10px;font-size:12px;opacity:.85;text-align:center}
+  </style>
+</head>
+<body>
+  <section id="roomSetup">
+    <div class="setupCard">
+      <h1>接続コードを入力</h1>
+      <form id="roomForm">
+        <input id="roomCodeInput" maxlength="4" autocomplete="off" inputmode="text" placeholder="ABCD">
+        <button type="submit">接続する</button>
+      </form>
+      <div id="roomError"></div>
+    </div>
+  </section>
+
+  <main id="controller">
+    <h1>バルーンシューター</h1>
+    <div id="playerText">PLAYER</div>
+    <div id="roomBadge">CODE：<span id="roomBadgeText">----</span></div>
+    <button id="startGyroButton" class="gyroButton" type="button">① ジャイロを有効にする</button>
+    <button id="recalibrateButton" class="gyroButton" type="button" disabled>② 今の向きを中心に合わせる</button>
+    <div id="aimBox"><div id="aimDot"></div></div>
+    <div id="startHint">画面に出てくる「START」のまとを<br>この発射ボタンでねらい撃ちしよう！</div>
+    <button id="fireButton" type="button" disabled>発射</button>
+    <div id="status">接続準備中</div>
+    <div class="httpsNotice">スマホを正面に持ってからジャイロを有効にしてください</div>
+  </main>
+  <script type="module" src="phone.js?v=7"></script>
+</body>
+</html>
